@@ -9,7 +9,7 @@ select title, price from titles where (title like "%computers%") and (title not 
 
 -- Exercice 3 :
 -- À partir de la table « titles », obtenir la liste des titres dont l’identifiant débute par SU ou BU. Afficher le titre et le prix de chaque livre.
-select title, price from titles where titles.type rlike "[BS]U%" group by title_id;
+select title, price from titles where titles.title rlike "[BS]U%" group by title_id;
 
 -- Exercice 4 :
 -- À partir de la table « titles », obtenir la liste des titres dont l’identifiant ne débute pas par SU ou BU. Afficher le titre et le prix de chaque livre.
