@@ -14,3 +14,6 @@ select au_fname, au_lname, pub_name from library.authors as la left join library
 
 -- 5. Effectif(nombre) d'employes par niveau d'experience.
 select count(*), job_lvl from employees group by job_lvl;
+
+-- 6. Liste des employes par maison d'edition
+select fname, lname, lp.pub_name from  library.publishers as lp join employees as e on lp.pub_id = e.pub_id;
