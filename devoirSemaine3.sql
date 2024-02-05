@@ -17,3 +17,6 @@ select count(*), job_lvl from employees group by job_lvl;
 
 -- 6. Liste des employes par maison d'edition
 select fname, lname, lp.pub_name from  library.publishers as lp join employees as e on lp.pub_id = e.pub_id;
+
+-- 7. Salaires horaires moyens des employes par maison d'edition 
+select avg(salary), lp.pub_name from  library.publishers as lp join employees as e where lp.pub_id = e.pub_id group by pub_name;
