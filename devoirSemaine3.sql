@@ -8,3 +8,6 @@ select au_fname, au_lname, pub_name from library.authors as la left join library
 
 -- 3. La liste des paires (auteur, éditeur) demeurant dans la même ville, incluant aussi les éditeurs qui ne répondent pas à ce critère.
 select au_fname, au_lname, pub_name from library.authors as la right join library.publishers as lp on lp.city = la.city;
+
+-- 4. La liste des paires (auteur, éditeur) demeurant dans la même ville, incluant les auteurs et les éditeurs qui ne répondent pas à ce critère.
+select au_fname, au_lname, pub_name from library.authors as la left join library.publishers as lp on lp.city = la.city union select au_fname, au_lname, pub_name from library.authors as la right join library.publishers as lp on lp.city = la.city;
