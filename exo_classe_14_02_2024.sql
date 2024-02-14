@@ -22,3 +22,17 @@ CREATE TABLE publishers(
     CONSTRAINT pk_publishers PRIMARY KEY(pub_id),
     CONSTRAINT uniq_publishers UNIQUE(pub_name)
 );
+
+DROP TABLE IF EXISTS employee;
+CREATE TABLE employee(
+	emp_id tinyint NOT NULL AUTO_INCREMENT /* PRIMARY KEY */,
+    fname varchar(50) NOT NULL,
+    minit varchar(50),
+    lname varchar(50) NOT NULL,
+    job_id tinyint NOT NULL REFERENCES jobs(job_id),
+    job_lvl tinyint NULL,
+    pub_id tinyint NOT NULL REFERENCES publishers(pub_id),
+    hire_date date,
+	CONSTRAINT pk_employee PRIMARY KEY(emp_id),
+	CONSTRAINT uniq_employee UNIQUE(emp_id)
+);
