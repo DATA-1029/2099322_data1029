@@ -1,5 +1,17 @@
--- question 1
-select * from table1;
+use library;
+select *
+from publishers p
+where p.pub_id in (select pub_id
+from employees
+where job_lvl in ('JUNIOR', 'INTERMEDIATE'));
+-- Regroupe les employes selon les employeurs
+select pub_id, count(emp_id)
+from employees
+where job_lvl = 'JUNIOR'
+group by(pub_id);
 
--- question 2
-select name from table2;
+-- liste des auteurs ayant plus de 2 publications
+select au_id, count(title_id)
+from titleauthor
+group by au_id
+having count(title_id)>2;
