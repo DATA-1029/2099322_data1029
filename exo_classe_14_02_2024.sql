@@ -68,3 +68,11 @@ CREATE TABLE sales (
     qty INT,
     PRIMARY KEY (store_id, ord_num, title_id)
 );
+
+DROP TABLE IF EXISTS redactions;
+CREATE TABLE redactions(
+	au_id tinyint not null REFERENCES `authors` (`au_id`),
+    title_id tinyint not null REFERENCES `titles` (`title_id`),
+    au_ord tinyint not null,
+    royalty float
+);
