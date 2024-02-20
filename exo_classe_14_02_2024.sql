@@ -1,4 +1,4 @@
-CREATE DATABASE library2;
+CREATE DATABASE if not exists library2;
 
 DROP DATABASE IF EXISTS library;
 use library2;
@@ -41,11 +41,10 @@ DROP TABLE IF EXISTS titles;
 create table titles(
 	tiles_id TINYINT AUTO_INCREMENT PRIMARY KEY,
 	titles VARCHAR(100),
-	`type` enum('Roman', 'Politique', 'Science', 'Histoire'),
-	pub_id SMALLINT,
+	type enum('Roman', 'Politique', 'Science', 'Histoire'),
+	pub_id SMALLINT REFERENCES publishers (pub_id),
 	price FLOAT,
 	advance FLOAT,
 	notes VARCHAR(255),
-	pub_date DATE,
-	CONSTRAINT `fk_pub_id` FOREIGN KEY (`pub_id`) REFERENCES `publishers` (`pub_id`)
+	pub_date DATE
 );
