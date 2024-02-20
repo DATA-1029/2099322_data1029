@@ -76,3 +76,19 @@ CREATE TABLE redactions(
     au_ord tinyint not null,
     royalty float
 );
+
+DROP TABLE IF EXISTS authors;
+CREATE TABLE authors(
+  au_id TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  au_lname VARCHAR(50) NOT NULL,
+  au_fname VARCHAR(50) NOT NULL,
+  phone varchar(20) not null UNIQUE CHECK (phone LIKE '+%' AND length(phone) BETWEEN 10 AND 15),
+  address VARCHAR(50) NOT NULL,
+  city VARCHAR(50) NOT NULL,
+  state VARCHAR(50) NULL,
+  zip VARCHAR(6) CHECK (zip regexp '^[A-Za-z][0-9][A-Za-z][0-9][A-Za-z][0-9]$') NOT NULL,
+  contract text null, 
+  email varchar(50) NOT NULL unique CHECK(email LIKE '%@%')
+  -- PRIMARY KEY (`au_id`),
+  -- UNIQUE INDEX `au_id_UNIQUE` (`au_id` ASC) VISIBLE);
+);
