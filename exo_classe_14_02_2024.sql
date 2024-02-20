@@ -58,3 +58,13 @@ CREATE TABLE stores(
     state VARCHAR(50),
     country VARCHAR(50)
 );
+
+DROP TABLE IF EXISTS sales; 
+CREATE TABLE sales (
+    store_id TINYINT REFERENCES `stores` (`stor_id`),
+    ord_num TINYINT,
+    title_id SMALLINT REFERENCES `titles` (`title_id`),
+    ord_date datetime,
+    qty INT,
+    PRIMARY KEY (store_id, ord_num, title_id)
+);
