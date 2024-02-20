@@ -38,13 +38,23 @@ CREATE TABLE employee(
 );
 
 DROP TABLE IF EXISTS titles;
-create table titles(
+CREATE TABLE titles(
 	tiles_id TINYINT AUTO_INCREMENT PRIMARY KEY,
 	titles VARCHAR(100),
-	type enum('Roman', 'Politique', 'Science', 'Histoire'),
+	`type` enum('Roman', 'Politique', 'Science', 'Histoire'),
 	pub_id SMALLINT REFERENCES publishers (pub_id),
 	price FLOAT,
 	advance FLOAT,
 	notes VARCHAR(255),
 	pub_date DATE
+);
+
+DROP TABLE IF EXISTS stores;
+CREATE TABLE stores(
+    stor_id TINYINT AUTO_INCREMENT PRIMARY KEY,
+    stor_name VARCHAR(50),
+    stor_address VARCHAR(50),
+    city VARCHAR(50),
+    state VARCHAR(50),
+    country VARCHAR(50)
 );
