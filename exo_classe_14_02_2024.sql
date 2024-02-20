@@ -36,3 +36,16 @@ CREATE TABLE employee(
 	CONSTRAINT pk_employee PRIMARY KEY(emp_id),
 	CONSTRAINT uniq_employee UNIQUE(emp_id)
 );
+
+DROP TABLE IF EXISTS titles;
+create table titles(
+	tiles_id TINYINT AUTO_INCREMENT PRIMARY KEY,
+	titles VARCHAR(100),
+	`type` enum('Roman', 'Politique', 'Science', 'Histoire'),
+	pub_id SMALLINT,
+	price FLOAT,
+	advance FLOAT,
+	notes VARCHAR(255),
+	pub_date DATE,
+	CONSTRAINT `fk_pub_id` FOREIGN KEY (`pub_id`) REFERENCES `publishers` (`pub_id`)
+);
