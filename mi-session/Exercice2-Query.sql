@@ -13,3 +13,10 @@ JOIN `role` r ON u.role_id = r.id;
 
 
 -- 3. Quel sont les noms de produits dont le fournisseur est basé à Moncton ?
+SELECT name
+FROM product as p
+WHERE p.name IN(
+			select adress
+            FROM supplier
+            WHERE adress = "Moncton"
+);
