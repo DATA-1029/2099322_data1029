@@ -61,3 +61,24 @@ WHERE title_id =(
 	SELECT title_id FROM sales
 	GROUP BY title_id ORDER BY sum(qty)desc limit 1
 );
+
+
+-- 8. Pour chaque boutique, les 2 livres les plus vendus et leurs prix.ALTER
+
+
+SELECT s.stor_name, t.title, t.price FROM stores AS s
+JOIN
+sales AS sa ON s.stor_id = sa.stor_id
+JOIN
+titles AS t ON sa.title_id = t.title_id
+WHERE sa.stor_id IN (
+	SELECT stor_id FROM sales
+	GROUP BY stor_id
+	ORDER BY sum(qty) desc
+	limit 2
+) AND t.title_id IN (
+	SELECT title_id FROM sales
+	GROUP BY title_id
+	ORDER BY sum(qty) desc
+	limit 2
+);
