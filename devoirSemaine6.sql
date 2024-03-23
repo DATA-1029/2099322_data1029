@@ -96,3 +96,10 @@ sales AS s ON t.title_id = s.title_id
 GROUP BY a.au_id
 ORDER BY sum(s.qty) DESC
 limit 5;
+
+
+-- 10. Prix moyens des livres par maisons d’édition.
+
+SELECT round(avg(t.price)) AS average_price, p.pub_name FROM publishers AS p
+JOIN titles AS t ON t.pub_id = p.pub_id
+GROUP BY p.pub_name;
