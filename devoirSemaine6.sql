@@ -16,9 +16,17 @@ WHERE salary>(
 );
 
 
--- Noms complets des employés des éditeurs canadiens.
+-- 3. Noms complets des employés des éditeurs canadiens.
 
 SELECT e.fname, e.lname, p.pub_name FROM employees AS e
 JOIN
 publishers AS p ON e.pub_id = p.pub_id
 WHERE country = 'Canada';
+
+
+-- 4. Noms complets des employés qui ont un manager
+
+SELECT e.fname AS first_name, e.lname AS last_name
+FROM employees e
+JOIN jobs j ON e.job_id = j.job_id
+WHERE j.max_lvl = 'MANAGER';
