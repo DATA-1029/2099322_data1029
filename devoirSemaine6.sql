@@ -52,3 +52,12 @@ WHERE e.salary = (
 	SELECT min(salary) FROM employees 
 	WHERE job_id = e.job_id
 );
+
+
+-- 7. De quels types sont les livres les plus vendus?
+
+SELECT t.`type` FROM titles AS t
+WHERE title_id =(
+	SELECT title_id FROM sales
+	GROUP BY title_id ORDER BY sum(qty)desc limit 1
+);
