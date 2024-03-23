@@ -82,3 +82,17 @@ WHERE sa.stor_id IN (
 	ORDER BY sum(qty) desc
 	limit 2
 );
+
+
+-- 9. Les auteurs des 5 livres les plus vendus.
+
+SELECT a.au_fname, a.au_lname FROM authors AS a
+JOIN
+titleauthor AS ta ON a.au_id = ta.au_id
+JOIN
+titles AS t ON t.title_id = ta.title_id
+JOIN
+sales AS s ON t.title_id = s.title_id
+GROUP BY a.au_id
+ORDER BY sum(s.qty) DESC
+limit 5;
