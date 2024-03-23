@@ -41,3 +41,14 @@ WHERE e.salary > (
 	SELECT AVG(salary) FROM employees 
 	WHERE e.pub_id = p.pub_id
 );
+
+
+-- 6. Noms complets des employés qui ont le salaire minimum de leur grade
+
+SELECT e.fname, e.lname, e.salary FROM employees AS e
+JOIN
+jobs AS j ON j.job_id = e.job_id
+WHERE e.salary = (
+	SELECT min(salary) FROM employees 
+	WHERE job_id = e.job_id
+);
