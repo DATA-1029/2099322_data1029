@@ -103,3 +103,13 @@ limit 5;
 SELECT round(avg(t.price)) AS average_price, p.pub_name FROM publishers AS p
 JOIN titles AS t ON t.pub_id = p.pub_id
 GROUP BY p.pub_name;
+
+
+-- 11. Les 3 auteurs ayant les plus de livres
+
+SELECT a.au_fname, a.au_lname , count(*) AS amount_of_books FROM authors AS a
+JOIN
+titleauthor AS ta ON ta.au_id = a.au_id
+GROUP BY a.au_id
+ORDER BY amount_of_books DESC
+limit 3;
