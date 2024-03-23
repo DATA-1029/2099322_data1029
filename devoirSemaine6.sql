@@ -30,3 +30,14 @@ SELECT e.fname AS first_name, e.lname AS last_name
 FROM employees e
 JOIN jobs j ON e.job_id = j.job_id
 WHERE j.max_lvl = 'MANAGER';
+
+
+-- 5. Noms complets des employés qui ont un salaire au-dessus de la moyenne de salaire chez leur employeur.
+
+SELECT e.fname, e.lname, p.pub_name FROM employees AS e
+JOIN
+publishers AS p ON p.pub_id = e.pub_id
+WHERE e.salary > (
+	SELECT AVG(salary) FROM employees 
+	WHERE e.pub_id = p.pub_id
+);
